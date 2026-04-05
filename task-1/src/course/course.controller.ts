@@ -1,4 +1,33 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param } from '@nestjs/common';
+import { CourseService } from './course.service';
 
 @Controller('course')
-export class CourseController {}
+export class CourseController {
+  constructor(private readonly courseService: CourseService) {}
+
+  @Get()
+  getAllCourses() {
+    return this.courseService.getAllCourses();
+  }
+
+  @Get(':id') // Fixed: Removed trailing space
+  getCourseById(@Param('id') id: string) { // Fixed: Changed to 'id'
+    return this.courseService.getCourseById(id);
+  }
+
+  @Post()
+  createCourse() {
+    return this.courseService.createCourse();
+  }
+
+  @Put(':id')
+  updateCourse(@Param('id') id: string) {
+    // Fixed: Changed from patchCourse to updateCourse to match the PUT action
+    return this.courseService.updateCourse(id); 
+  }
+
+  @Delete(':id')
+  deleteCourse(@Param('id') id: string) { // Fixed: Changed from ':id' to 'id'
+    return this.courseService.deleteCourse(id);
+  }
+}
