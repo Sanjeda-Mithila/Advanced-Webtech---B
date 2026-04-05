@@ -10,8 +10,8 @@ export class CourseController {
     return this.courseService.getAllCourses();
   }
 
-  @Get(':id') // Fixed: Removed trailing space
-  getCourseById(@Param('id') id: string) { // Fixed: Changed to 'id'
+  @Get(':id') 
+  getCourseById(@Param('id') id: string) { 
     return this.courseService.getCourseById(id);
   }
 
@@ -22,12 +22,12 @@ export class CourseController {
 
   @Put(':id')
   updateCourse(@Param('id') id: string) {
-    // Fixed: Changed from patchCourse to updateCourse to match the PUT action
+    
     return this.courseService.updateCourse(id); 
   }
 
   @Delete(':id')
-  deleteCourse(@Param('id') id: string) { // Fixed: Changed from ':id' to 'id'
+  deleteCourse(@Param('id') id: string) { 
     return this.courseService.deleteCourse(id);
   }
 }
