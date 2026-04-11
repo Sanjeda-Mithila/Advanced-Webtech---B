@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // গ্লোবাল ভ্যালিডেশন পাইপ সেটআপ
+ 
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,               
     forbidNonWhitelisted: true,    

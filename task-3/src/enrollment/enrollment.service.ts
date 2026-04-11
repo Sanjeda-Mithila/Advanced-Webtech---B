@@ -6,7 +6,7 @@ import { NotificationService } from '../notification/notification.service';
 export class EnrollmentService {
   constructor(
     private courseService: CourseService,
-    @Inject(forwardRef(() => NotificationService)) // Partc
+    @Inject(forwardRef(() => NotificationService)) //c
     private notificationService: NotificationService,
   ) {}
 

@@ -32,7 +32,7 @@ export class CourseController {
   @Delete(':id')
   delete(@Param('id') id: string) { return this.courseService.deleteCourse(id); }
 
-  // ফাইল আপলোড রাউট [cite: 97, 101]
+  
   @Post(':id/upload')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
@@ -43,12 +43,12 @@ export class CourseController {
       },
     }),
     fileFilter: (req, file, cb) => {
-      if (!file.originalname.match(/\.(jpg|jpeg|png|pdf)$/)) { // [cite: 97]
+      if (!file.originalname.match(/\.(jpg|jpeg|png|pdf)$/)) { 
         return cb(new Error('Only JPG, JPEG, PNG, and PDF files are allowed!'), false);
       }
       cb(null, true);
     },
-    limits: { fileSize: 2 * 1024 * 1024 } // সর্বোচ্চ ২ মেগাবাইট [cite: 97, 135]
+    limits: { fileSize: 2 * 1024 * 1024 } 
   }))
   uploadFile(@Param('id') id: string, @UploadedFile() file: Express.Multer.File) {
     return this.courseService.uploadCourseMaterial(id, file);
